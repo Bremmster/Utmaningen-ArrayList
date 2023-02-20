@@ -7,18 +7,20 @@ public class Main {
 
         Vid inlämning, skicka in kodfilerna (*.java) bara */
 
-        /*
-        +---------------------------------------+
-        | Den coola namnlistan                  |
-        +---------------------------------------+
-        | Listan innehåller 0 namn              |
-        | 1) Mata in ett namn                   |
-        | 2) Radera ett namn                    |
-        | 3) Ändra ett namn                     |
-        | 4) Lista alla namn                    |
-        +---------------------------------------+
-         */
+        int numberOfNames = 2; // numberOfNames ska bort och istället vara storleken på listan
+        printMenu(numberOfNames); // numberOfNames ska bort och istället vara storleken på listan
+    }
 
-
+    private static void printMenu(int numberOfNames) {
+        // numberOfNames ska bort och istället vara storleken på listan
+        System.out.println("+---------------------------------------+");
+        System.out.println("| Den Crudiga namnlistan                |");
+        System.out.println("+---------------------------------------+");
+        System.out.println("| Listan innehåller " + numberOfNames + " namn              |");
+        System.out.println("| 1) Mata in ett namn                   |");
+        System.out.println("| 2) Radera ett namn                    |");
+        System.out.println("| 3) Ändra ett namn                     |");
+        System.out.println("| 4) Lista alla namn                    |");
+        System.out.println("+---------------------------------------+");
     }
 }
