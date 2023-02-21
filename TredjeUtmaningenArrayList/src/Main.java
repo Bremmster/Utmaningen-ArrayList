@@ -9,13 +9,28 @@ public class Main {
         om att namnet inte finns.
 
         Vid inlämning, skicka in kodfilerna (*.java) bara */
-        ArrayList<String> names = new ArrayList<>();
 
-        printMenu(names); // Klar
-        addName(names); // Klar
-        removeName(names);
-        changeName(names);
-        listNames(names); // Klar
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> names = new ArrayList<>();
+        boolean run = true;
+        int usrChoice;
+
+        // loop med alla alternativen
+        // användaren ska välja med int
+        // switch för de olika
+
+        do {
+            printMenu(names);
+            usrChoice = scanner.nextInt();
+            switch (usrChoice){
+                case 1 -> addName(names);
+                case 2 -> removeName(names);
+                case 3 -> changeName(names);
+                case 4 -> listNames(names);
+                case 9 -> run = !run;
+                default -> System.out.println("Inte ett giltigt val");
+            }
+        } while (run);
     }
 
     private static void listNames(ArrayList<String> names) {
@@ -37,8 +52,13 @@ public class Main {
         } else System.out.println("Namnet finns inte i listan.");
     }
     private static void removeName(ArrayList<String> namn) {
-        // namn.remove
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ta bort namn ur listan. Namn: ");
+        String remove = scanner.nextLine();
+        if (namn.contains(remove)){
+            namn.remove(remove);
+            System.out.println("Namnet är nu borttaget");
+        } else System.out.println("Namnet finns inte i listan");
     }
     private static void addName(ArrayList<String> namn) {
         Scanner scanner = new Scanner(System.in);
@@ -55,6 +75,8 @@ public class Main {
         System.out.println("| 2) Radera ett namn                    |");
         System.out.println("| 3) Ändra ett namn                     |");
         System.out.println("| 4) Lista alla namn                    |");
+        System.out.println("| 9) Avsluta                            |");
         System.out.println("+---------------------------------------+");
+        System.out.println("Ange alternativ: ");
     }
 }
