@@ -10,6 +10,7 @@ public class Main {
 
         Vid inlämning, skicka in kodfilerna (*.java) bara */
 
+        // Kristian Karlson
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> names = new ArrayList<>();
 
