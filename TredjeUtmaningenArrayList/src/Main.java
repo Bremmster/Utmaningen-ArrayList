@@ -14,7 +14,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> names = new ArrayList<>();
 
-        start(scanner, names); // main method that calls print menu and the CRUD (L) functions
+        start(scanner, names); // Here we go! Handles menu and all the CRUD (L) functions
         System.out.println("Programmet avslutas, ha en fortsatt bra dag!");
         scanner.close();
     }
