@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    static ArrayList<String> names = new ArrayList<>();
     public static void main(String[] args) {
         /*Du ska skapa en namnlista med CRUD funktionalitet
         Man saka kunna skapa namn, lista alla namn, ändra namn och radera namn
@@ -12,33 +13,30 @@ public class Main {
 
         // Kristian Karlson
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> names = new ArrayList<>();
-
-        start(scanner, names); // Here we go! Handles menu and all the CRUD (L) functions
+        start(scanner); // Here we go! Handles menu and all the CRUD (L) functions
         System.out.println("Programmet avslutas, ha en fortsatt bra dag!");
         scanner.close();
     }
-    private static void start(Scanner scanner, ArrayList<String> names) {
+    private static void start(Scanner scanner) {
         String usrChoice;
-        while (true) {
-            usrChoice = printMenu(scanner, names);
-            switch (Integer.parseInt(usrChoice)){
-                case 1 -> addName(scanner,names);
-                case 2 -> removeName(scanner,names);
-                case 3 -> changeName(scanner,names);
-                case 4 -> listNames(names);
-                case 9 -> {
-                    return;
-                }
-                default -> System.out.println("Inte ett giltigt val");
+        usrChoice = printMenu(scanner);
+        switch (Integer.parseInt(usrChoice)){
+            case 1 -> addName(scanner);
+            case 2 -> removeName(scanner);
+            case 3 -> changeName(scanner);
+            case 4 -> listNames();
+            case 9 -> {
+                return;
             }
+            default -> System.out.println("Inte ett giltigt val");
         }
+        start(scanner);
     }
-    private static String printMenu(Scanner scanner, ArrayList<String> namn) {
+    private static String printMenu(Scanner scanner) {
         System.out.println("+---------------------------------------+");
         System.out.println("| Den Crudiga namnlistan                |");
         System.out.println("+---------------------------------------+");
-        System.out.println("| Listan innehåller " + namn.size() + " namn              |");
+        System.out.println("| Listan innehåller " + names.size() + " namn              |");
         System.out.println("| 1) Mata in ett namn                   |");
         System.out.println("| 2) Radera ett namn                    |");
         System.out.println("| 3) Ändra ett namn                     |");
@@ -48,29 +46,29 @@ public class Main {
         System.out.print("Ange alternativ: ");
         return scanner.nextLine();
     }
-    private static void addName(Scanner scanner,ArrayList<String> namn) {
+    private static void addName(Scanner scanner) {
         System.out.print("Namn att lägga till: ");
-        namn.add(scanner.nextLine());
+        names.add(scanner.nextLine());
     }
-    private static void removeName(Scanner scanner, ArrayList<String> namn) {
+    private static void removeName(Scanner scanner) {
         System.out.print("Ta bort namn ur listan. Namn: ");
         String remove = scanner.nextLine();
-        if (namn.contains(remove)){
-            namn.remove(remove);
+        if (names.contains(remove)){
+            names.remove(remove);
             System.out.println("Namnet är nu borttaget");
         } else System.out.println("Namnet finns inte i listan");
     }
-    private static void changeName(Scanner scanner, ArrayList<String> namn) {
+    private static void changeName(Scanner scanner) {
         System.out.print("Sök och ersätt. namn: ");
         String replace = scanner.nextLine(); // om sant ersätt
-        if (namn.contains(replace)){
+        if (names.contains(replace)){
             System.out.print("Namnet finns, vad vill du ersätta med: ");
             String newName = scanner.nextLine();
-            int pos = namn.indexOf(replace);
-            namn.set(pos, newName);
+            int pos = names.indexOf(replace);
+            names.set(pos, newName);
         } else System.out.println("Namnet finns inte i listan.");
     }
-    private static void listNames(ArrayList<String> names) {
+    private static void listNames() {
         System.out.println("Listan innehåller följande namn:");
         for (String name : names){
             System.out.println(name);
